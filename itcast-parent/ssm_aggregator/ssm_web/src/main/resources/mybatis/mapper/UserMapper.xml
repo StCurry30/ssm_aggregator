@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mapper.UserMapper">
+    <resultMap id="MyUserMap" type="MyUser">
+        <id property="id" column="id"></id>
+        <result property="userName" column="user_name"></result>
+    </resultMap>
+    <select id="findAllUsers" resultType="MyUser">
+        SELECT * FROM tb_user;
+    </select>
+
+    <insert id="saveUser">
+        INSERT INTO tb_user
+        (
+         user_name,
+         password,
+         name,
+         age,
+         sex,
+         birthday,
+         created,
+         updated
+        )
+        VALUES
+        (
+        #{userName},
+        #{password},
+        #{name},
+        #{age},
+        #{sex},
+        #{birthday},
+        NOW(),
+        NOW()
+        )
+    </insert>
+</mapper>
